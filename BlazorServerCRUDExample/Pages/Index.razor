@@ -3,3 +3,37 @@
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+<br />
+<br />
+
+<label> Name </label>
+<input type="text" @bind-value="@Name" />
+
+<br />
+<label> Salary </label>
+<input type="text" @bind="Salary" />
+
+<br />
+<label> CheckBox </label>
+<input type="checkbox" @bind="Checkbox" />
+
+
+<br />
+<br />
+<h2> Values </h2>
+<pre>
+    <label> @Name </label>
+    <label> @Salary </label>
+    <label> @Checkbox </label>
+</pre>
+
+
+@code{
+
+    string Name = "";
+    double Salary = 0;
+    bool Checkbox = true;
+
+}
+
