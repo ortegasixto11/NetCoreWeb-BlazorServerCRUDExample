@@ -1,0 +1,19 @@
+﻿<h3> Hi @username </h3>
+
+@code {
+
+    [Parameter]
+    public string UserName { get; set; }
+    string username = "User";
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        if (!string.IsNullOrEmpty(UserName)) username = UserName;
+
+    }
+
+
+    
+
+}
