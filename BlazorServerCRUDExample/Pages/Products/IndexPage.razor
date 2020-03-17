@@ -1,0 +1,45 @@
+﻿@page "/products/index"
+
+@inject IProductService service
+
+<h3>IndexPage</h3>
+
+@if (Products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> Edit </th>
+                <th> Delete </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td><input type="button" class="btn btn-primary" value="Edit" /></td>
+                    <td><input type="button" class="btn btn-danger" value="Delete" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+
+    List<Product> Products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Products = await service.Get();
+    }
+
+
+}
