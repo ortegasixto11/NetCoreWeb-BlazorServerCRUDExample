@@ -1,0 +1,44 @@
+﻿@page "/products/create"
+
+@inject IProductService service
+@inject NavigationManager navManager
+
+<h3> Create Product </h3>
+
+<EditForm Model="Product">
+
+    @if (ShowAlert)
+    {
+        <div class="alert alert-warning" role="alert">
+            The Name field is required!
+        </div>
+    }
+
+    <div class="form-group">
+        <label> Name: </label>
+        <InputText @bind-Value="Product.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-primary" @onclick="Save">Save Product</button>
+    </div>
+</EditForm>
+
+
+@code {
+
+    Product Product = new Product();
+    bool ShowAlert = false;
+
+    private async void Save()
+    {
+        if (string.IsNullOrEmpty(Product.Name))
+        {
+            ShowAlert = true;
+            return;
+        }
+
+        await service.AddAsync(Product);
+        navManager.NavigateTo("products/index");
+    }
+
+}

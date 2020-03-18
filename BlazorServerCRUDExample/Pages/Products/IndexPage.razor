@@ -1,6 +1,7 @@
 ﻿@page "/products/index"
 
 @inject IProductService service
+@inject NavigationManager navManager
 
 <h3>IndexPage</h3>
 
@@ -10,6 +11,8 @@
 }
 else
 {
+    <button type="button" class="btn btn-info" @onclick="GoToCreatePage">Create Product</button>
+
     <table class="table">
         <thead>
             <tr>
@@ -38,7 +41,12 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Products = await service.Get();
+        Products = await service.GetAllAsync();
+    }
+
+    private void GoToCreatePage()
+    {
+        navManager.NavigateTo("products/create");
     }
 
 

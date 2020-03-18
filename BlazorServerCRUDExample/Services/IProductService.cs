@@ -8,10 +8,10 @@ namespace BlazorServerCRUDExample.Services
 {
     public interface IProductService
     {
-        Task<List<Product>> Get();
-        Task<Product> Get(Guid id);
-        Task Add(Product product);
-        Task Update(Product product);
-        Task Delete(Guid id);
+        Task<List<Product>> GetAllAsync();
+        Task<Product> GetAsync(Guid id);
+        Task AddAsync(Product product);
+        Task UpdateAsync(Product product);
+        Task DeleteAsync(Guid id);
     }
 }
