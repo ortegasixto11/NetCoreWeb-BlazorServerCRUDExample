@@ -12,6 +12,7 @@ namespace BlazorServerCRUDExample.Services
         Task<Product> GetAsync(Guid id);
         Task AddAsync(Product product);
         Task UpdateAsync(Product product);
-        Task DeleteAsync(Guid id);
+        Task DeleteByIdAsync(Guid id);
+        Task DeleteAsync(Product product);
     }
 }

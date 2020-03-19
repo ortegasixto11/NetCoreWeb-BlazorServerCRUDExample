@@ -11,7 +11,8 @@
 }
 else
 {
-    <button type="button" class="btn btn-info" @onclick="GoToCreatePage">Create Product</button>
+    <a href="/products/create" class="btn btn-info">Create Product</a> 
+    <br />
 
     <table class="table">
         <thead>
@@ -27,7 +28,7 @@ else
                 <tr>
                     <td>@product.Name</td>
                     <td> <a href="/products/edit/@product.ID" class="btn btn-warning">Edit</a> </td>
-                    <td><input type="button" class="btn btn-danger" value="Delete" /></td>
+                    <td> <a href="/products/delete/@product.ID" class="btn btn-danger">Delete</a> </td>
                 </tr>
             }
         </tbody>
@@ -48,11 +49,5 @@ else
     {
         navManager.NavigateTo("products/create");
     }
-
-    private void GoToEditPage(Guid id)
-    {
-        navManager.NavigateTo($"products/edit/{id}");
-    }
-
 
 }

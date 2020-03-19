@@ -25,7 +25,13 @@ namespace BlazorServerCRUDExample.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Product product)
+        {
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteByIdAsync(Guid id)
         {
             _context.Products.Remove(await _context.Products.Where(x => x.ID == id).FirstOrDefaultAsync());
             await _context.SaveChangesAsync();
