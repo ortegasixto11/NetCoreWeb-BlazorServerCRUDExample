@@ -32,7 +32,8 @@ namespace BlazorServerCRUDExample
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                options.UseNpgsql(Configuration.GetConnectionString("PostgreSQL"))
             );
             services.AddTransient<IProductService, ProductRepository>();
         }

@@ -1,5 +1,6 @@
 ﻿using BlazorServerCRUDExample.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,18 @@ namespace BlazorServerCRUDExample.Data
         {
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //{
-        //    if (!options.IsConfigured)
-        //    {
-        //        options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=DB_CRUD_GraphQL;Trusted_Connection=True;MultipleActiveResultSets=true");
-        //    }
-        //}
+        public ApplicationDbContext() : base(new DbContextOptionsBuilder<ApplicationDbContext>()
+            .UseNpgsql(GetConnectionString()).Options)
+        {
+        }
 
-        public virtual DbSet<Product> Products { get; set; }
+        private static string GetConnectionString()
+        {
+            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+            var configuration = builder.Build();
+            return configuration.GetConnectionString("DefaultConnection");
+        }
+
+        public virtual DbSet<Product> BlazorServerCRUD_Products { get; set; }
     }
 }
