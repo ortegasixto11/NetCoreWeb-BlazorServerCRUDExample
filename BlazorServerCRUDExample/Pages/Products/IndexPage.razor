@@ -3,7 +3,7 @@
 @inject IProductService service
 @inject NavigationManager navManager
 
-<h3>IndexPage</h3>
+<h3> Products </h3>
 
 @if (Products == null)
 {
@@ -11,7 +11,8 @@
 }
 else
 {
-    <a href="/products/create" class="btn btn-info">Create Product</a> 
+    <a href="/products/create" class="btn btn-info">Create Product</a>
+    <br />
     <br />
 
     <table class="table">
